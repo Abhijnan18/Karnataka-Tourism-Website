@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #111; /* Dark Background Color */
+}
+
+.loading-container {
+    text-align: center;
+}
+
+.loading-text {
+    font-size: 3rem;
+    font-family: 'Calligraffitti', cursive;
+    color: #fff; /* Text Color */
+    display: inline-block;
+    position: relative;
+}
+
+.loading-text .bubble {
+    display: inline-block;
+    animation: bubbleAnimation 1.5s ease-in-out infinite;
+    transform-origin: bottom center;
+    opacity: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+@keyframes bubbleAnimation {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    25% {
+        transform: translateY(-10px) scale(1.2);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.4);
+        opacity: 0;
+    }
+    75% {
+        transform: translateY(-10px) scale(1.2);
+        opacity: 1;
+    }
+}

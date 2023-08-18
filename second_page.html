@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Slider</title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .cm-slider__wrapper {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-color: rgb(20, 20, 20);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cm-slider {
+            display: flex;
+            gap: 5vmin;
+            user-select: none;
+        }
+
+        .cm-slider__link {
+            position: relative;
+            display: block;
+        }
+
+        .cm-slider__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .cm-slider__link:hover .cm-slider__overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cm-slider__overlay-text {
+            font-size: 40px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .cm-slider__image {
+            min-width: 45vmin;
+            max-width: 45vmin;
+            height: 65vmin;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .explore-container {
+            display: flex;
+            align-items: center;
+            font-size: 9rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgb(20, 20, 20);
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-top: 30px solid transparent;
+            border-bottom: 30px solid transparent;
+            border-left: 60px solid #FFD700;
+            /* Golden Arrow */
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            transform: translateX(-50%) rotate(0deg);
+            animation: rotate 3s infinite, bounce 2s infinite;
+        }
+
+
+        .arrow-container {
+            display: inline-block;
+            position: relative;
+            margin-left: 40px;
+            /* Adjust spacing here */
+            animation: moveAndBounce 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite, shimmer 2s infinite;
+        }
+
+        .arrow-container:hover .arrow {
+            animation: none;
+            transform: translateX(-50%) rotate(0deg) scale(1.2);
+            opacity: 0.8;
+        }
+
+        .arrow:nth-child(2) .arrow {
+            left: 20px;
+            transform: scaleX(-1) translateX(50%) rotate(0deg);
+        }
+
+        .arrow:nth-child(3) .arrow {
+            left: 40px;
+            transform: scaleX(-1) translateX(50%) rotate(0deg);
+        }
+
+        .arrow:nth-child(4) .arrow {
+            left: 60px;
+            transform: scaleX(-1) translateX(50%) rotate(0deg);
+        }
+
+        @keyframes moveAndBounce {
+
+            0%,
+            100% {
+                left: 0;
+                opacity: 1;
+            }
+
+            50% {
+                left: 100px;
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes rotate {
+
+            0%,
+            100% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            50% {
+                transform: translateX(-50%) rotate(180deg);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            50% {
+                transform: translateX(-50%) rotate(0deg) translateX(-20px);
+            }
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                background-position: -200% 0;
+            }
+
+            50% {
+                background-position: 200% 0;
+            }
+        }
+
+
+
+        @media (hover: hover) {
+            .cm-slider__wrapper {
+                position: relative;
+            }
+
+            @media (max-width: 1120px) {
+                .cm-slider__wrapper {
+                    width: 100vw !important;
+                    max-width: 100vw !important;
+                }
+            }
+
+            .cm-slider {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .cm-slider__image {
+                object-position: 0% center;
+            }
+        }
+
+        @media (hover: none) {
+            .cm-slider__image {
+                min-width: 65vmin;
+                max-width: 65vmin;
+            }
+
+            .cm-slider> :first-child {
+                margin-left: 5vmin;
+            }
+
+            /* Some display:flex and ::after voodoo to get a margin-right in overflow-x:scroll https://stackoverflow.com/a/38997047 */
+            .cm-slider> :last-child {
+                display: flex;
+            }
+
+            .cm-slider> :last-child::after {
+                content: "";
+                flex: 0 0 5vmin;
+            }
+
+            .cm-slider__wrapper {
+                overflow-x: scroll;
+                padding: 5vmin 0;
+                width: 100vw !important;
+                max-width: 100vw !important;
+            }
+        }
+
+        .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; Adjust this value if needed */
+}
+
+    </style>
+</head>
+
+<body>
+
+
+
+
+
+    <div class="cm-slider__wrapper">
+        <div class="cm-slider">
+
+            <div class="image-container"><img src="logo.png" alt=""></div>
+
+            <div class="explore-container">
+                Explore themes
+                <span class="arrow-container">
+                    <div class="arrow"></div>
+                </span>
+                <span class="arrow-container">
+                    <div class="arrow"></div>
+                </span>
+                <span class="arrow-container">
+                    <div class="arrow"></div>
+                </span>
+                <span class="arrow-container">
+                    <div class="arrow"></div>
+                </span>
+            </div>
+
+            <div class="empty-container1"></div>
+            <div class="empty-container2"></div>
+            <div class="empty-container3"></div>
+
+
+
+
+
+            <a class="cm-slider__link" data-slide-index="0" 
+                href="heritage_and_culture.html" title="Culture and Heritage" rel="noopener">
+                <img class="cm-slider__image" alt="Culture and Heritage"
+                    src="https://images.unsplash.com/photo-1596018382916-56d2e341d784?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2148&q=80">
+                <div class="cm-slider__overlay">
+                    <div class="cm-slider__overlay-text">Culture & Heritage</div>
+                </div>
+            </a>
+
+            <a class="cm-slider__link" data-slide-index="0" 
+                href="Wild_Life.html" title="Wild-Life" rel="noopener">
+                <img class="cm-slider__image" alt="Wild-Life"
+                    src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2674&q=80">
+                <div class="cm-slider__overlay">
+                    <div class="cm-slider__overlay-text">Wild-Life</div>
+                </div>
+            </a>
+
+           
+
+            <a class="cm-slider__link" data-slide-index="0" 
+                href="hill_stations.html" title="Eco-Toursim & Hill Stations" rel="noopener">
+                <img class="cm-slider__image" alt="Eco-Toursim & Hill Stations"
+                    src="https://images.unsplash.com/photo-1601748615907-674b3ce9142e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80">
+                <div class="cm-slider__overlay">
+                    <div class="cm-slider__overlay-text">Eco-Toursim & Hill Stations</div>
+                </div>
+            </a>
+
+            <a class="cm-slider__link" data-slide-index="0" 
+            href="lodges_and_resorts.html" title="Jungle Lodges & Resorts" rel="noopener">
+            <img class="cm-slider__image" alt="Jungle Lodges & Resorts" src="Resorts2.webp">
+            <div class="cm-slider__overlay">
+                <div class="cm-slider__overlay-text">Jungle Lodges & Resorts</div>
+            </div>
+        </a>
+
+
+
+            <a class="cm-slider__link" data-slide-index="0" 
+                href="beaches.html" title="Karnataka Beaches" rel="noopener">
+                <img class="cm-slider__image" alt="Karnataka Beaches" src="Beaches.webp">
+                <div class="cm-slider__overlay">
+                    <div class="cm-slider__overlay-text">Beaches</div>
+                </div>
+            </a>
+
+            <a class="cm-slider__link" data-slide-index="0" 
+            href="spirituality.html" title="Spirutality" rel="noopener">
+            <img class="cm-slider__image" alt="Spirutality"
+                src="https://images.unsplash.com/photo-1630764883473-e8c2056f0589?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2338&q=80">
+            <div class="cm-slider__overlay">
+                <div class="cm-slider__overlay-text">Spirutality</div>
+            </div>
+        </a>
+
+
+
+
+
+           
+
+<!--            
+            <a class="cm-slider__link" data-slide-index="0" target="_blank"
+                href="https://unsplash.com/photos/ouo1hbizWwo/" title="Photo by Andrew S on Unsplash" rel="noopener">
+                <img class="cm-slider__image" alt="Photo by Andrew S on Unsplash" src="adv.jpeg">
+                <div class="cm-slider__overlay">
+                    <div class="cm-slider__overlay-text">Adventure</div>
+                </div>
+            </a> -->
+
+
+            </a>
+        </div>
+    </div>
+    <script>
+        const exploreContainer = document.querySelector(".arrow-container");
+
+        function simulateMouseHover() {
+            const event = new MouseEvent("mousemove", {
+                bubbles: true,
+                cancelable: true,
+                clientX: exploreContainer.getBoundingClientRect().left + 10,
+                clientY: exploreContainer.getBoundingClientRect().top + 10
+            });
+
+            exploreContainer.dispatchEvent(event);
+        }
+
+        window.addEventListener("load", () => {
+            simulateMouseHover();
+        });
+
+
+        const cmSliderWrapper = document.querySelector(".cm-slider__wrapper");
+        const getWindowWidth = () => window.innerWidth || document.documentElement.clientWidth;
+        const getWindowHeight = () => window.innerHeight || document.documentElement.clientHeight;
+        const getWidthAdjustment = () => (getWindowWidth() - cmSliderWrapper.offsetWidth) / 2
+        //const isTouchScreenOnly = () => ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+        const isTouchScreenOnly = () => !window.matchMedia("(hover: hover)").matches;
+        cmSliderWrapper.onmousemove = e => {
+            if (isTouchScreenOnly()) return;
+            let percentage = ((e.clientX - getWidthAdjustment()) / cmSliderWrapper.offsetWidth) * 100;
+            percentage = percentage > 100 ? 100 : percentage < 0 ? 0 : percentage;
+            let cmSlider = document.querySelector(".cm-slider");
+            //cmSliderWrapper.dataset.percentage = percentage;
+
+            //cmSlider.style.transform = `translate(${-percentage}%, -50%)`;
+            let animateDuration = 800;
+            if (typeof userTabbed !== "undefined" && userTabbed) {
+                animateDuration = 300;
+                userTabbed = false;
+            }
+            cmSlider.animate({
+                transform: `translate(${-percentage}%, -50%)`
+            }, {
+                duration: animateDuration, fill: "forwards"
+            });
+            for (const image of cmSlider.getElementsByClassName("cm-slider__image")) {
+                //image.style.objectPosition = `${percentage}% center`;
+                image.animate({
+                    objectPosition: `${percentage}% center`
+                }, {
+                    duration: animateDuration, fill: "forwards"
+                });
+            }
+            if (typeof nudgeSliderScrollPosition !== "undefined" && nudgeSliderScrollPosition) nudgeSliderScrollPosition();
+        }
+
+        
+
+
+    </script>
+</body>
+
+</html>

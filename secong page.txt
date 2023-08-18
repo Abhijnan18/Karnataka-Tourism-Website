@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Slider</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .cm-slider__wrapper {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background-color: rgb(20, 20, 20);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cm-slider {
+        display: flex;
+        gap: 5vmin;
+        user-select: none;
+    }
+
+    .cm-slider__link {
+        position: relative;
+        display: block;
+    }
+
+    .cm-slider__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .cm-slider__link:hover .cm-slider__overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .cm-slider__overlay-text {
+        font-size: 40px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .cm-slider__image {
+        min-width: 45vmin;
+        max-width: 45vmin;
+        height: 65vmin;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+
+
+    @media (hover: hover) {
+        .cm-slider__wrapper {
+            position: relative;
+        }
+
+        @media (max-width: 1120px) {
+            .cm-slider__wrapper {
+                width: 100vw !important;
+                max-width: 100vw !important;
+            }
+        }
+
+        .cm-slider {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cm-slider__image {
+            object-position: 0% center;
+        }
+    }
+
+    @media (hover: none) {
+        .cm-slider__image {
+            min-width: 65vmin;
+            max-width: 65vmin;
+        }
+
+        .cm-slider> :first-child {
+            margin-left: 5vmin;
+        }
+
+        /* Some display:flex and ::after voodoo to get a margin-right in overflow-x:scroll https://stackoverflow.com/a/38997047 */
+        .cm-slider> :last-child {
+            display: flex;
+        }
+
+        .cm-slider> :last-child::after {
+            content: "";
+            flex: 0 0 5vmin;
+        }
+
+        .cm-slider__wrapper {
+            overflow-x: scroll;
+            padding: 5vmin 0;
+            width: 100vw !important;
+            max-width: 100vw !important;
+        }
+    }
+</style>
+</head>
+<body>
+
+
+    <div class="cm-slider__wrapper">
+        <div class="cm-slider">
+
+            <a class="cm-slider__link" data-slide-index="0" target="_blank" href="https://unsplash.com/photos/ouo1hbizWwo/"
+            title="Photo by Andrew S on Unsplash" rel="noopener">
+            <img class="cm-slider__image" alt="Photo by Andrew S on Unsplash"
+                src="https://images.unsplash.com/photo-1596018382916-56d2e341d784?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2148&q=80">
+            <div class="cm-slider__overlay">
+                <div class="cm-slider__overlay-text">Culture & Heritage</div>
+            </div>
+        </a>
+
+            <a class="cm-slider__link" data-slide-index="0" target="_blank" href="https://unsplash.com/photos/ouo1hbizWwo/"
+            title="Photo by Andrew S on Unsplash" rel="noopener">
+            <img class="cm-slider__image" alt="Photo by Andrew S on Unsplash"
+                src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2674&q=80">
+            <div class="cm-slider__overlay">
+                <div class="cm-slider__overlay-text">Wild-Life</div>
+            </div>
+        </a>
+
+        <a class="cm-slider__link" data-slide-index="0" target="_blank" href="https://unsplash.com/photos/ouo1hbizWwo/"
+                title="Photo by Andrew S on Unsplash" rel="noopener">
+                <img class="cm-slider__image" alt="Photo by Andrew S on Unsplash"
+                    src="https://images.unsplash.com/photo-1601748615907-674b3ce9142e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80">
+                <div class="cm-slider__overlay">
+                    <div class="cm-slider__overlay-text">Eco-Toursim & Hill Stations</div>
+                </div>
+            </a>
+
+
+           
+            <a class="cm-slider__link" data-slide-index="0" target="_blank" href="https://unsplash.com/photos/ouo1hbizWwo/"
+                title="Photo by Andrew S on Unsplash" rel="noopener">
+                <img class="cm-slider__image" alt="Photo by Andrew S on Unsplash"
+                    src="Beaches.webp">
+                <div class="cm-slider__overlay">
+                    <div class="cm-slider__overlay-text">Beaches</div>
+                </div>
+            </a>
+         
+            
+            
+
+            <a class="cm-slider__link" data-slide-index="0" target="_blank" href="https://unsplash.com/photos/ouo1hbizWwo/"
+            title="Photo by Andrew S on Unsplash" rel="noopener">
+            <img class="cm-slider__image" alt="Photo by Andrew S on Unsplash"
+                src="Resorts2.webp">
+            <div class="cm-slider__overlay">
+                <div class="cm-slider__overlay-text">Jungle Lodges & Resorts</div>
+            </div>
+        </a>
+
+            <a class="cm-slider__link" data-slide-index="0" target="_blank" href="https://unsplash.com/photos/ouo1hbizWwo/"
+            title="Photo by Andrew S on Unsplash" rel="noopener">
+            <img class="cm-slider__image" alt="Photo by Andrew S on Unsplash"
+                src="https://wallpaperaccess.com/full/1642751.jpg">
+            <div class="cm-slider__overlay">
+                <div class="cm-slider__overlay-text">Spirutality & Wellness</div>
+            </div>
+        </a>
+           
+        <a class="cm-slider__link" data-slide-index="0" target="_blank" href="https://unsplash.com/photos/ouo1hbizWwo/"
+        title="Photo by Andrew S on Unsplash" rel="noopener">
+        <img class="cm-slider__image" alt="Photo by Andrew S on Unsplash"
+            src="adv.jpeg">
+        <div class="cm-slider__overlay">
+            <div class="cm-slider__overlay-text">Adventure</div>
+        </div>
+    </a>
+          
+
+        </a>
+    </div>
+</div>
+<script>
+    <!--
+        const cmSliderWrapper = document.querySelector(".cm-slider__wrapper");
+        const getWindowWidth = () => window.innerWidth || document.documentElement.clientWidth;
+        const getWindowHeight = () => window.innerHeight || document.documentElement.clientHeight;
+        const getWidthAdjustment = () => (getWindowWidth() - cmSliderWrapper.offsetWidth) / 2
+        //const isTouchScreenOnly = () => ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+        const isTouchScreenOnly = () => !window.matchMedia("(hover: hover)").matches;
+        cmSliderWrapper.onmousemove = e => {
+            if(isTouchScreenOnly()) return;
+            let percentage = ((e.clientX - getWidthAdjustment()) / cmSliderWrapper.offsetWidth) * 100;
+            percentage = percentage > 100 ? 100 : percentage < 0 ? 0 : percentage;
+            let cmSlider = document.querySelector(".cm-slider");
+            //cmSliderWrapper.dataset.percentage = percentage;
+        	
+            //cmSlider.style.transform = `translate(${-percentage}%, -50%)`;
+            let animateDuration = 800;
+            if(typeof userTabbed !== "undefined" && userTabbed){
+                animateDuration = 300;
+                userTabbed = false;
+            }
+            cmSlider.animate({
+                transform: `translate(${-percentage}%, -50%)`
+            },{
+                duration:animateDuration, fill:"forwards"
+            });
+            for(const image of cmSlider.getElementsByClassName("cm-slider__image")){
+                //image.style.objectPosition = `${percentage}% center`;
+                image.animate({
+                    objectPosition: `${percentage}% center`
+                },{
+                    duration:animateDuration, fill:"forwards"
+                });
+            }
+            if(typeof nudgeSliderScrollPosition !== "undefined" && nudgeSliderScrollPosition) nudgeSliderScrollPosition();
+        }
+    //scatteringclouds.com--></script>
+</body>
+</html>

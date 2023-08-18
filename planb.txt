@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loading Animation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&family=Lobster&family=Poppins:wght@500;600;700;800;900&display=swap');
+  
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+  }
+  
+  .loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    opacity: 1; /* Initial opacity */
+    transition: opacity 1s ease-in-out; /* Smooth fade animation */
+    z-index: 9999;
+    overflow: hidden;
+  }
+  
+  .loading-text {
+    font-size: 6vw; /* Responsive font size */
+    margin-right: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+  
+  .loading-dots {
+    display: inline-block;
+    width: 4vw; /* Responsive dot size */
+    height: 4vw; /* Responsive dot size */
+    border-radius: 50%;
+    background-color: #fff;
+    animation: pulse 1s infinite;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .loading-dots:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .loading-dots:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  .matrix-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+  
+  .matrix-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    opacity: 0.2;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+  }
+</style>
+</head>
+<body>
+<div class="loading-container">
+  <div class="matrix-container">
+    <img class="matrix-image" src="1.webp" alt="">
+    <img class="matrix-image" src="2.webp" alt="">
+    <img class="matrix-image" src="3.webp" alt="">
+    <img class="matrix-image" src="4.webp" alt="">
+    <img class="matrix-image" src="5.webp" alt="">
+    <img class="matrix-image" src="5.webp" alt="">
+    <img class="matrix-image" src="5.webp" alt="">
+    <img class="matrix-image" src="5.webp" alt="">
+    <img class="matrix-image" src="5.webp" alt="">
+    <img class="matrix-image" src="5.webp" alt="">
+    <!-- Add more images here as needed -->
+  </div>
+  <div class="loading-text">Karnataka Tourism</div>
+  <div class="loading-dots"></div>
+  <div class="loading-dots"></div>
+  <div class="loading-dots"></div>
+  <div class="loading-dots"></div>
+</div>
+
+<script>
+  // Wait for 4 seconds and then fade out the loading animation
+  setTimeout(function() {
+    var loadingContainer = document.querySelector('.loading-container');
+    loadingContainer.style.opacity = '0';
+    
+    // After fading out, scroll up smoothly to load second_page.html
+    setTimeout(function() {
+      window.location.href = 'second_page.html';
+    }, 1000); // Wait 1 second after fading out
+  }, 5000); // Wait 5 seconds initially
+</script>
+</body>
+</html>

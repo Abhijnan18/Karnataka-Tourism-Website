@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loading Animation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&family=Lobster&family=Poppins:wght@500;600;700;800;900&display=swap');
+  
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(20, 20, 20);
+    overflow: hidden;
+  }
+  
+  .loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    opacity: 1; /* Initial opacity */
+    transition: opacity 3s ease-in-out; /* Smooth fade animation */
+    z-index: 9999;
+  }
+  
+  .loading-text {
+    font-size: 6vw; /* Responsive font size */
+    margin-right: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+  
+  .loading-dots {
+    display: inline-block;
+    width: 2vw; /* Responsive dot size */
+    height: 2vw; /* Responsive dot size */
+    border-radius: 50%;
+    background-color: #fff;
+    animation: pulse 1s infinite;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .loading-dots:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .loading-dots:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  .matrix-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px; /* Gap between images */
+  }
+
+  .matrix-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: scrollImages 15s infinite linear;
+    opacity: 0.7;
+    scroll-behavior: smooth;
+  }
+
+  .matrix-image:nth-child(2) {
+    animation-direction: reverse;
+    /* scroll-behavior: smooth; */
+  }
+  .matrix-image:nth-child(4) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(7) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(9) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(12) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(14) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(17) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(19) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(22) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(24) {
+    animation-direction: reverse;
+  }
+  /* .matrix-image:nth-child(21) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(22) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(23) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(24) {
+    animation-direction: reverse;
+  }
+  .matrix-image:nth-child(25) {
+    animation-direction: reverse;
+  } */
+  
+
+  @keyframes scrollImages {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(calc(-100% - 20px)); /* Account for gap */
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+  }
+
+
+  /* Typing animation */
+  .special-heading-wrapper {
+    position: relative;
+    padding-top: 120px; /* Add padding of 120px to the top and bottom */
+    padding-bottom: 120px; /* Add padding of 120px to the top and bottom */
+}
+
+h2.special-heading {
+    font-size: 5vw;
+    color: transparent;
+    -webkit-text-stroke: 0.3vw transparent;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2; /* Bring the h2 element above the pseudo-element */
+}
+
+h2.special-heading span {
+    display: block; /* Added to ensure the span takes full width */
+}
+
+h2.special-heading::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #fff;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid #fff;
+    overflow: hidden;
+    animation: animate 7s linear ;
+}
+
+@keyframes animate {
+    0%, 10%, 100% {
+        width: 0;
+    }
+
+    70%, 90% {
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+<body>
+<div class="loading-container">
+  <div class="matrix-container">
+    <img class="matrix-image" src="1.webp" alt="">
+    <img class="matrix-image" src="2.webp" alt="">
+    <img class="matrix-image" src="3.webp" alt="">
+    <img class="matrix-image" src="7.jpeg" alt="">
+    <img class="matrix-image" src="5.jpg" alt="">
+
+    <img class="matrix-image" src="5.webp" alt="">
+    <img class="matrix-image" src="13.webp" alt="">
+    <img class="matrix-image" src="7.webp" alt="">
+    <img class="matrix-image" src="9.avif" alt="">
+    <img class="matrix-image" src="10.jpg" alt="">
+    
+    <img class="matrix-image" src="11.jpeg" alt="">
+    <img class="matrix-image" src="12.webp" alt="">
+    <img class="matrix-image" src="14.jpg" alt="">
+    <img class="matrix-image" src="15.jpeg" alt="">
+    <img class="matrix-image" src="7 copy.webp" alt="">
+
+    <img class="matrix-image" src="1.webp" alt="">
+    <img class="matrix-image" src="2.webp" alt="">
+    <img class="matrix-image" src="3.webp" alt="">
+    <img class="matrix-image" src="6.webp" alt="">
+    <img class="matrix-image" src="5.jpeg" alt="">
+
+    <img class="matrix-image" src="1.webp" alt="">
+    <img class="matrix-image" src="2.webp" alt="">
+    <img class="matrix-image" src="3.webp" alt="">
+    <img class="matrix-image" src="6.webp" alt="">
+    <img class="matrix-image" src="5.jpeg" alt="">
+
+    <!-- Add more images here as needed -->
+  </div>
+
+  <div class="centered-text">
+    <div class="special-heading-wrapper">
+        <h2 class="special-heading" data-text="Karnataka&nbsp;Tourism"><span>Karnataka Tourism</span></h2>
+    </div>
+</div>
+  <!-- <div class="loading-text">Karnataka Tourism</div>
+  <div class="loading-dots"></div>
+  <div class="loading-dots"></div>
+  <div class="loading-dots"></div>
+  <div class="loading-dots"></div> -->
+
+</div>
+
+ <script>
+  // Wait for 4 seconds and then fade out the loading animation
+  setTimeout(function() {
+    var loadingContainer = document.querySelector('.loading-container');
+    loadingContainer.style.opacity = '0';
+    
+    // After fading out, scroll up smoothly to load second_page.html
+    setTimeout(function() {
+      window.location.href = 'second_page.html';
+    }, 2000); // Wait 1 second after fading out
+  }, 6000); // Wait 5 seconds initially
+</script> 
+</body>
+</html>
